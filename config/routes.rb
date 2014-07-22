@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     root "homes#show"
   end
 
+  resources :tasks, only: [:new, :create, :edit, :update, :destroy]
+
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
 end
