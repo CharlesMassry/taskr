@@ -1,10 +1,10 @@
 <% if !task.done %>
-<div>
-  <h3><%= task.title %></h3>
-<p><%= task.body %></p>
-<p>
-<%= link_to "Edit Task", edit_task_path(task) %>
-<%= link_to "Done", task_path(task), method: :delete %>
-</p>
-</div>
+  <div>
+    <h3><%= task.title %></h3>
+    <p><%= task.body %></p>
+    <p>
+      <%= link_to "Edit Task", edit_task_path(task) %>
+      <%= link_to "Done", task_path(task), method: :delete %>
+    </p>
+  </div>
 <% end %>
