@@ -1,6 +1,6 @@
 $(function() {
 
-  $(".title").click(function() {
+  $("#tasks").on("click", ".title", function() {
     var text = $(this).text();
     var input = $("<input type='text'>");
     input.val(text);
@@ -9,16 +9,17 @@ $(function() {
     $(this).replaceWith(form);
   });
 
-  $(".task").on("submit", "#edit_title", function() {
-    var getTaskId = $(this).parent().attr("id");
+  $("#tasks").on("submit", "#edit_title", function() {
+    var getTaskId = $("#edit_title").parent().attr("id");
     var taskNumber = getTaskId.replace("task_", "");
-    var text = $("#edit_title").children().val();
+    var text = $("#edit_title").children("input").val();
     $.ajax({
       url: "/tasks/" + taskNumber,
       type: "PATCH",
       data: { task: { title: text } },
       success: function() {
-        $("#" + getTaskId).prepend("<h3 class='title'>" + text + "</h3>");
+        $("#" + getTaskId).prepend("<h3>" + text + "</h3>");
+        $("#" + getTaskId).children("h3").addClass("title");
         $("#edit_title").remove();
       }
     });

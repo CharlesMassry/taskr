@@ -1,9 +1,7 @@
 <% if !task.done %>
   <%= div_for(task) do %>
     <h3 class="title"><%= task.title %></h3>
-    <p>
     <%= button_to "Done", task, method: :patch, remote: true, id: "done"  %>
       <%= button_to "Delete", task, method: :delete, remote: true %>
-      </p>
     <% end %>
 <% end %>
