@@ -1,0 +1,8 @@
+<h1>Hi <%= current_user.email %>! Here are your todos:</h1>
+<%= form_for @task, url: tasks_path, remote: true do |form| %>
+  <%= render "new_task", form: form %>
+<%= form.submit "Create Task"  %>
+<% end %>
+<div id="tasks">
+  <%= render current_user.tasks %>
+</div>

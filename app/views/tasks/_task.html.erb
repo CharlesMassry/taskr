@@ -1,10 +1,7 @@
 <% if !task.done %>
-  <div>
-    <h3><%= task.title %></h3>
-    <p><%= task.body %></p>
-    <p>
-      <%= link_to "Edit Task", edit_task_path(task) %>
-      <%= link_to "Done", task_path(task), method: :delete %>
-    </p>
-  </div>
+  <%= div_for(task) do %>
+    <h3 class="title"><%= task.title %></h3>
+    <%= button_to "Done", task, method: :patch, remote: true, id: "done"  %>
+      <%= button_to "Delete", task, method: :delete, remote: true %>
+    <% end %>
 <% end %>
